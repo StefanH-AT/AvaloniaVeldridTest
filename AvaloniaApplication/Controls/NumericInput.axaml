@@ -1,0 +1,16 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:AvaloniaApplication.Controls">
+    <Design.PreviewWith>
+        <controls:NumericInput />
+    </Design.PreviewWith>
+
+    <Style Selector="controls|NumericInput">
+        <!-- Set Defaults -->
+        <Setter Property="Template">
+            <ControlTemplate>
+                <TextBox UseFloatingWatermark="True" Watermark="Test"/>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>
