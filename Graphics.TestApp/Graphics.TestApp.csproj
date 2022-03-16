@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Graphics.TestApp</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Veldrid" Version="4.8.0" />
+        <PackageReference Include="Veldrid.SPIRV" Version="1.0.13" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Graphics.Core\Graphics.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Shaders\Vertex.glsl" />
+      <EmbeddedResource Include="Shaders\Vertex.glsl" />
+      <None Remove="Shaders\Fragment.glsl" />
+      <EmbeddedResource Include="Shaders\Fragment.glsl" />
+    </ItemGroup>
+
+
+</Project>

@@ -17,6 +17,6 @@
         <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.10" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\Test3D\Test3D.csproj" />
+      <ProjectReference Include="..\Graphics.TestApp\Graphics.TestApp.csproj" />
     </ItemGroup>
 </Project>

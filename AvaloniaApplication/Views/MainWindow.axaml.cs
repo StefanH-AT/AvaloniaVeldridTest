@@ -33,20 +33,7 @@ public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
 
     public override void EndInit()
     {
-        var topLevel = (TopLevel) this.GetVisualRoot();
-        var windowImpl = (WindowImpl) topLevel.PlatformImpl;
         
-        var handle = windowImpl.Handle.Handle;
-        var instance = Marshal.GetHINSTANCE(typeof(Program).Module);
-
-        _graphicsService = new GraphicsService(handle, instance);
-        _graphicsService.Resize((uint) ClientSize.Width, (uint) ClientSize.Height);
-
-        Thread graphicsThread = new Thread(() =>
-        {
-            _graphicsService.Loop().Wait();
-        });
-        graphicsThread.Start();
 
         base.EndInit();
     }

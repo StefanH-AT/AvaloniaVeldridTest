@@ -20,64 +20,14 @@ public class GraphicsService : IDisposable
     private readonly Pipeline _pipeline;
     
     private const string VertexCode = @"
-#version 450
-
-layout(location = 0) in vec2 Position;
-layout(location = 1) in vec4 Color;
-
-layout(location = 0) out vec4 fsin_Color;
-
-void main()
-{
-    gl_Position = vec4(Position, 0, 1);
-    fsin_Color = Color;
-}";
+";
 
     private const string FragmentCode = @"
-#version 450
-
-layout(location = 0) in vec4 fsin_Color;
-layout(location = 0) out vec4 fsout_Color;
-
-void main()
-{
-    fsout_Color = fsin_Color;
-}";
+";
     
     public GraphicsService(IntPtr? controlHandle, IntPtr? instanceHandle)
     {
-        GraphicsDeviceOptions options = new GraphicsDeviceOptions
-        {
-            PreferStandardClipSpaceYDirection = true,
-            PreferDepthRangeZeroToOne = true
-        };
-        if (controlHandle is null)
-        {
-            WindowCreateInfo windowCi = new WindowCreateInfo()
-            {
-                X = 100,
-                Y = 100,
-                WindowWidth = 960,
-                WindowHeight = 540,
-                WindowTitle = "Veldrid Tutorial"
-            };
-            
-            _window = VeldridStartup.CreateWindow(ref windowCi);
-            _graphicsDevice = VeldridStartup.CreateGraphicsDevice(_window, options);
-        }
-        else
-        {
-            IntPtr handle = controlHandle ?? throw new Exception();
-            IntPtr instance = instanceHandle ?? throw new Exception();
-            _graphicsDevice = GraphicsDevice.CreateD3D11(options);
-            var swapchainSource = SwapchainSource.CreateWin32(handle, instance);
-            var swapchainDescription = new SwapchainDescription(swapchainSource, 100, 200, PixelFormat.R32_Float, true);
-
-            _swapchain = _graphicsDevice.ResourceFactory.CreateSwapchain(swapchainDescription);
-        }
-        
-        
-        
+       
         ResourceFactory factory = _graphicsDevice.ResourceFactory;
         
         VertexPositionColor[] quadVertices =
@@ -96,9 +46,7 @@ void main()
         _graphicsDevice.UpdateBuffer(_vertexBuffer, 0, quadVertices);
         _graphicsDevice.UpdateBuffer(_indexBuffer, 0, quadIndices);
 
-        VertexLayoutDescription vertexLayout = new VertexLayoutDescription(
-            new VertexElementDescription("Position", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float2),
-            new VertexElementDescription("Color", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float4));
+        VertexLayoutDescription vertexLayout = 
 
         ShaderDescription vertexShaderDesc = new ShaderDescription(
             ShaderStages.Vertex,
