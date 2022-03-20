@@ -17,7 +17,7 @@
         <TextBlock Text="{Binding Greeting}"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"/>
-        <controls:NumericInput Height="20" Width="1000"/>
+        <controls:TestAppGraphicsControl Height="300" />
         <Button>Button</Button>
     </StackPanel>
 
